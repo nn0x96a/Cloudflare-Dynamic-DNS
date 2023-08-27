@@ -1,7 +1,16 @@
 # Cloudflare-Dynamic-DNS
 Bash script to update Dynamic IP for Cloudflare
+    
+# Set the below parameters for Update_Cloudflare_Dynamic_IP.sh:
+TOKEN="Replace with API Token"; \ 
+ZONE_ID="Replace with Zone ID"; \
+DNS_ID="Replace with DNS ID"; \
+TYPE="A"; \
+NAME="Replace with DNS Record Name"; \
 
-# Get DNS Record ID by executing the below script in Terminal/Command Prompt
+Zone ID: https://developers.cloudflare.com/fundamentals/get-started/basic-tasks/find-account-and-zone-ids/
+
+DNS ID: Get DNS Record ID by executing the below script in Terminal/Command Prompt
 
 TOKEN="Replace with API Token"; \
 ZONE_ID="Replace with Zone ID under Overview"; \
@@ -13,13 +22,6 @@ curl -X GET "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/$DN
     -H "Content-Type: application/json" \
     --data '{"type":"'"$TYPE"'","name":"'"$NAME"'","content":"'"$CONTENT"'","proxied":'"$PROXIED"',"ttl":'"$TTL"'}' \
     | python -m json.tool;
-    
-# Set the below parameters for Update_Cloudflare_Dynamic_IP.sh:
-TOKEN="Replace with API Token"; \ 
-ZONE_ID="Replace with Zone ID"; \
-DNS_ID="Replace with DNS ID"; \
-TYPE="A"; \
-NAME="Replace with DNS Record Name"; \
 
 # actions_Cloudflare_DDNS.conf is a custom Cron Job for OPNSense. 
 
