@@ -17,6 +17,7 @@ curl -X GET "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/$DN
 # actions_Cloudflare_DDNS.conf is a custom Cron Job for OPNSense. 
 
 Copy Update_Cloudflare_Dynamic_IP.sh to /usr/home/ or modify the directory within actions_Cloudflare_DDNS.conf
+
 Copy the file to: /usr/local/opnsense/service/conf/actions.d
 
 service configd restart
