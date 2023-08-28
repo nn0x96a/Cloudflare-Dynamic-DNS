@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
 # Instructions on how to use this script:
-# git clone https://github.com/nn0x96a/Cloudflare-Dynamic-DNS
+# curl -LJO https://raw.githubusercontent.com/nn0x96a/Cloudflare-Dynamic-DNS/main/Update_Cloudflare_Dynamic_IP.sh
 # chmod 755 Update_Cloudflare_Dynamic_IP.sh
 # Set the required parameters
 # ./Update_Cloudflare_Dynamic_IP.sh
