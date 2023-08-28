@@ -30,3 +30,7 @@ Copy Update_Cloudflare_Dynamic_IP.sh to /usr/home/ or modify the directory withi
 Copy the file to: /usr/local/opnsense/service/conf/actions.d
 
 service configd restart
+
+# Credit: special thanks to Steve@Tech Otaku for the API scripts.
+
+Original scripts: https://www.tech-otaku.com/web-development/using-cloudflare-api-manage-dns-records/#435
