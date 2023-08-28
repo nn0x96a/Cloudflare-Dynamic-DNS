@@ -1,33 +1,28 @@
 # Cloudflare-Dynamic-DNS
-Bash script to update Dynamic IP for Cloudflare
+Bash script to update Dynamic IP for Cloudflare. The script is written to be use on any platform that can run bash script. However, the action_Cloudflare_DDNS.conf is written specifically for OPNSense Custom Cron Job
+
+# Step-by-Step Instruction:
+https://sysadmin102.com/2023/08/opnsense-dynamic-dns-with-cloudflare-using-a-custom-cron-job/
     
 # Set the below parameters for Update_Cloudflare_Dynamic_IP.sh:
-TOKEN="Replace with API Token"; \ 
-ZONE_ID="Replace with Zone ID"; \
-DNS_ID="Replace with DNS ID"; \
-TYPE="A"; \
-NAME="Replace with DNS Record Name"; \
+TOKEN="Replace with API Token";
+ZONE_ID="Replace with Zone ID";
+DNS_ID="Replace with DNS ID";
+TYPE="A";
+NAME="Replace with DNS Record Name";
+
+API Toekn: https://developers.cloudflare.com/fundamentals/api/get-started/create-token/
 
 Zone ID: https://developers.cloudflare.com/fundamentals/get-started/basic-tasks/find-account-and-zone-ids/
 
-DNS ID: Get DNS Record ID by executing the below script in Terminal/Command Prompt
-
-TOKEN="Replace with API Token"; \
-ZONE_ID="Replace with Zone ID under Overview"; \
-TYPE="A"; \
-PROXIED="false"; \
-TTL="120";\
-curl -X GET "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/$DNS_ID" \
-    -H "Authorization: Bearer $TOKEN" \
-    -H "Content-Type: application/json" \
-    --data '{"type":"'"$TYPE"'","name":"'"$NAME"'","content":"'"$CONTENT"'","proxied":'"$PROXIED"',"ttl":'"$TTL"'}' \
-    | python -m json.tool;
+DNS ID: Get DNS Record ID by executing the Get_DNS_ID.sh in Terminal/Command Prompt
 
 # actions_Cloudflare_DDNS.conf is a custom Cron Job for OPNSense. 
 
-Copy Update_Cloudflare_Dynamic_IP.sh to /usr/home/ or modify the directory within actions_Cloudflare_DDNS.conf
+Use the curl command to clone the actions_Cloudflare_DDNS.conf to your local folder
 
-Copy the file to: /usr/local/opnsense/service/conf/actions.d
+cd /usr/local/opnsense/service/conf/actions.d
+curl -LJO https://raw.githubusercontent.com/nn0x96a/Cloudflare-Dynamic-DNS/main/actions_Cloudflare_DDNS.conf
 
 service configd restart
 
